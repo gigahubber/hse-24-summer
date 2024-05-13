@@ -15,6 +15,16 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=matthias
       - POSTGRES_DB=mydb
+    
+  mongodb:
+    image: mongodb:7.0.5-ubi8
+    networks:
+      - todonet
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
 
   todobackend-springboot:
     image: maeddes/todobackend-springboot:v2402
